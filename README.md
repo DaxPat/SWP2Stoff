@@ -2263,6 +2263,105 @@ Bei einer HashMap wird der Key (intern) gehasht und der Zugriff so verbessert.
 
 siehe https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html
 
+# Algorithmen
+
+Algorithmen dienen dazu, Input zu verarbeiten und den gewünschten Output zu produzieren.
+Sie sollen folgende Eigenschaften besitzen:
+
+  - deterministisch: Für gleiche Inputs sollen immer die gleichen Outputs erstellt werden. 
+  Bsp.: Beim sortieren von Zahlen, soll der Output immer in der gleichen Reihenfolge passieren. Egal wie oft ich 
+  den Algorithmus aufrufe, der Output mit dem gleichen Input ist immer der selbe.
+  - terministisch: durch alle Verzweigungstrukturen soll, der Algorithmus ein Ende finden.
+
+## Sortieralgorithmen
+
+Dienen dazu Zahlen in Datenstrukturen (zb. Array) in einer bestimmten Reihenfolge zu sortieren.
+
+```shell
+Bsp.: [7,2,5,4] -> (sortiert) -> [2,4,5,7]
+```  
+
+### Bubblesort
+
+Daten werden sortiert indem die größten Elemente aufsteigen wie Luftblasen im Wasser.
+
+```java
+public static void bubbleSort(int[] a){
+  for (int i=0; i< a.length; i++){
+    for (jnt j=0; j < a.length-1; j++){
+    // Optimierung: Letzte Elemente werden nicht mehr verglichen
+    // for (int j=0; j < a.length-1-i; j++){
+      if (a[j] > a[j+1]) {
+        int tmp = a[j+1];
+        a[j+1] = a[j];
+        a[j] = tmp;
+      }
+    }
+  }
+}
+```
+
+### Insertionsort
+
+Given an unsorted array(a): Another array is used as the sorted array (s).
+
+- select the first number out of the array
+- compare it with each elements in s and insert it into the appropriate position
+
+
+e.g.: 
+
+```bash
+[4,7,23,6] -> [] // pick 4
+[4,7,23,6] -> [4] // insert 4 into sorted array
+[4,7,23,6] -> [4,7] // insert 7 after 4, after comparison 
+[4,7,23,6] -> [4,7,23] // insert 23 after 7: after comparing it to 4 and 7
+[4,7,23,6] -> [4,6,7,23] // insert 6 after 4: after comparing it to 4 and 7
+```
+
+```java
+public static void insertionSort(ArrayList<Integer> a){
+  ArrayList<Integer> result = new ArrayList<>();
+  for( int i=0; i < a.size(); i++){
+    int j = i -1;
+    // for( int j=0; j < a.size() - 1 - i; j++){
+      if ( a.get(i) > a.get(j) ) {
+        result.add(a.get(j));
+      }
+    // }
+  }
+}
+```
+
+### Insertionsort
+
+Elemente werden der Reihe nach verglichen und wenn der Richtige Platz gefunden wurde getauscht.
+
+```java
+// Beispiel mit 2 Arrays
+// nicht fertig! 
+
+public static void insertionSort(ArrayList<Integer> a){
+  ArrayList<Integer> output;
+  for( int i=0; i < a.size(); i++) {
+    int tmp = a.get(i);
+    if (output.isEmpty()) {
+      output.add(tmp);
+    } else {
+      int pos = 0;
+      for(int j=0; j < output.size(); j++){
+        if ( tmp > output.get(j)j ) {
+          // output.add(j-1,tmp);
+        } else {
+          
+        }
+      }
+    }
+  }
+}
+
+```
+
 # Rekursion
 
 Rekursion wird verwendet um eine bestimmte Art von Problemlösungen umzusetzen.
