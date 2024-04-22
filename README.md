@@ -2338,28 +2338,38 @@ public static void insertionSort(ArrayList<Integer> a){
 Elemente werden der Reihe nach verglichen und wenn der Richtige Platz gefunden wurde getauscht.
 
 ```java
-// Beispiel mit 2 Arrays
-// nicht fertig! 
-
-public static void insertionSort(ArrayList<Integer> a){
-  ArrayList<Integer> output;
-  for( int i=0; i < a.size(); i++) {
-    int tmp = a.get(i);
-    if (output.isEmpty()) {
-      output.add(tmp);
-    } else {
-      int pos = 0;
-      for(int j=0; j < output.size(); j++){
-        if ( tmp > output.get(j)j ) {
-          // output.add(j-1,tmp);
-        } else {
-          
-        }
-      }
+// in place
+public static void insertionSort(ArrayList<Integer> a) {
+  for (int i = 1; i < a.size(); i++) {
+    int j = i - 1;
+    int key = a.get(i);
+    while (j >= 0 && a.get(j) > key) {
+      a.set(j + 1, a.get(j));
+      j = j - 1;
     }
+    a.set(j + 1, key);
   }
 }
 
+// mit Array der das sortierte Ergebnis beinhaltet.
+public static ArrayList<Integer> insertionSort2(ArrayList<Integer> a) {
+  ArrayList<Integer> result = new ArrayList<>();
+  for (int i = 0; i < a.size(); i++) {
+    int toSort = a.get(i);
+    if (result.isEmpty()) {
+      result.add(toSort);
+    } else {
+      int pos = 0;
+      for (int j = 0; j < result.size(); j++) {
+        if (result.get(j) < toSort) {
+          pos = j + 1;
+        }
+      }
+      result.add(pos, toSort);
+    }
+  }
+  return result;
+}
 ```
 
 # Rekursion
