@@ -62,6 +62,8 @@ lang: "de-AT"
 		- [Bubblesort](#bubblesort)
 		- [Insertionsort](#insertionsort)
 		- [Insertionsort](#insertionsort-1)
+	- [Divide and Conquer](#divide-and-conquer)
+	- [MergeSort](#mergesort)
 - [Java Argumenten Logik](#java-argumenten-logik)
 - [Rekursion](#rekursion)
 	- [Endrekursion](#endrekursion)
@@ -2378,6 +2380,61 @@ public static ArrayList<Integer> insertionSort2(ArrayList<Integer> a) {
 }
 ```
 
+## Divide and Conquer
+
+Große Probleme werden in kleinere Stücke zerlegt, welche einfach zu lösen sind.
+Werden viel in "schnellen" Sortieralgorithmen verwendet.
+
+## MergeSort
+
+Ist ein Sortieralgorithmus der den Ausgangsarray als erstes in einzel Elemente zerlegt und anschließend diese teile in sortierter Reihenfolge zusammenfügt.
+
+![mergesort funktionsweise](mergesort-blog-1-Image.jpg)
+
+```java
+public static void mergeSort(int[] array) {
+		if (array.length > 1) {
+				int mid = (array.length / 2);
+				int[] left = new int[mid];
+				int[] right = new int[array.length - mid];
+
+				for (int i = 0; i < mid; i++) {
+						left[i] = array[i];
+				}
+
+				for (int i = mid; i < array.length; i++) {
+						right[i - mid] = array[i];
+				}
+
+				mergeSort(left);
+				mergeSort(right);
+
+				int i = 0;
+				int j = 0;
+				int k = 0;
+				while (i < left.length && j < right.length) {
+						if (left[i] < right[j]) {
+								array[k] = left[i];
+								i++;
+						} else {
+								array[k] = right[j];
+								j++;
+						}
+						k++;
+				}
+				while (i < left.length) {
+						array[k] = left[i];
+						i++;
+						k++;
+				}
+				while (j < right.length) {
+						array[k] = right[j];
+						j++;
+						k++;
+				}
+		}
+}
+```
 # Java Argumenten Logik
 
 Argumente in Java haben ihre Eigenheiten. Da Java keine Referenezen (&) oder
