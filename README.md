@@ -2372,6 +2372,65 @@ public static ArrayList<Integer> insertionSort2(ArrayList<Integer> a) {
 }
 ```
 
+# Java Argumenten Logik
+
+Argumente in Java haben ihre Eigenheiten. Da Java keine Referenezen (&) oder
+Pointer(*) unterstützt, werden interne Details ausgeblendet.
+
+```java
+public class Main{
+
+  public static class Person{
+    public int age;
+    public String name;
+
+    public Person(int age, String name){
+      this.age = age;
+      this.name = name;
+    }
+  }
+
+  // name von a wird überschrieben
+  public static void whatHappensPersonName(Person a, Person b){
+    a.name = b.name;
+  }
+
+  // a ist eine Refenz (intern) und wird wie ein primitiver Datentyp kopiert
+  public static void whatHappensPersonFull(Person a, Person b){
+    a = b;
+  }
+
+  // a ist ein primitiver Datentyp und wird vor dem Aufruf in a kopiert
+  public static void whatHappes(int a, int b){
+    a = b;
+  }
+
+  // Der Inhalt von a wird durch b geändert.
+  public static void whatHappensArray(int[] a, int b){
+    a[0] = b;
+  }
+
+  // Die Referenz auf den Array a wird kopiert und diese Funktion hat keinen Effekt
+  public static void whatHappensArrayFull(int[] a, int[] b){
+    a = b;
+  }
+
+  // Die Referenz auf den String a wird kopiert und diese Funktion hat keinen Effekt
+  public static void whatHappensString(String s, String b){
+    s = b;
+  }
+
+  // Die Referenz auf den Array a wird kopiert und diese Funktion hat keinen Effekt
+  public static void whatHappensStringArray(String[] s, String[] b){
+    s = b;
+  }
+  
+  // Die Referenz auf den Integer a wird kopiert und diese Funktion hat keinen Effekt
+  public static void whatHappensInteger(Integer a, Integer b){
+    a = b;
+  }
+```
+
 # Rekursion
 
 Rekursion wird verwendet um eine bestimmte Art von Problemlösungen umzusetzen.
