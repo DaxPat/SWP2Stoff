@@ -2289,7 +2289,7 @@ Dienen dazu Zahlen in Datenstrukturen (zb. Array) in einer bestimmten Reihenfolg
 Bsp.: [7,2,5,4] -> (sortiert) -> [2,4,5,7]
 ```  
 
-### Bubblesort
+### Bubblesort (it's a feature)
 
 Daten werden sortiert indem die größten Elemente aufsteigen wie Luftblasen im Wasser.
 
